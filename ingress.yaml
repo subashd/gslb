@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.citrix.com/frontend-ip: "<VPX_VIP>" #replace this IP
+    kubernetes.io/ingress.class: "citrix"
+  name: web-ingress
+spec:
+  rules:
+  - host: foodcourt.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: apache
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific

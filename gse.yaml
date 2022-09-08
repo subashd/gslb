@@ -1,0 +1,9 @@
+apiVersion: "citrix.com/v1beta1"
+kind: globalserviceentry
+metadata:
+  name: 'apache.default.east.cluster1'
+  namespace: default
+spec:
+  endpoint:
+    ipv4address: <CS VIP of site1 VPX>
+    monitorPort: 80

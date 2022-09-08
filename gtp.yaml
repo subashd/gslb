@@ -1,0 +1,19 @@
+apiVersion: "citrix.com/v1beta1"
+kind: globaltrafficpolicy
+metadata:
+  name: gtp1
+spec:
+  serviceType: 'HTTP'
+  hosts:
+  - host: 'foodcourt.com'
+    policy:
+      trafficPolicy: 'ROUNDROBIN'
+      targets:
+      - destination: 'apache.default.east.cluster1'
+        weight: 50
+      - destination: 'apache.default.west.cluster2'
+        weight: 50
+      monitor:
+      - monType: http
+        uri: ''
+        respCode: 200
